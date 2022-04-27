@@ -1,45 +1,64 @@
 package edu.tcu.cs.superfrogscheduler.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class Superfrog implements Serializable {
-    private String name;
-    private String email;
-    private String username;
-    private String actions;
 
-    public Superfrog() {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
+    private String name;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "ownerFrog")
+    @JsonIgnore
+    private List<Request> requests = new ArrayList<>();
+
+
+    public Superfrog(){
+
+    }
+
+    public List<Request> getArtifacts() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+
+    public void addRequest(Request request){
+        // set request owner
+        request.setOwnerFrog(this);
+        // add this request to this wizard
+        this.requests.add(request);
+    }
+    public void removeRequest(Request request){
+        // remove request owner
+        request.setOwnerFrog(null);
+        // remove this request from request
+        this.requests.remove(request);
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getActions() {
-        return actions;
-    }
-
-    public void setActions(String actions) {
-        this.actions = actions;
-    }
 }
