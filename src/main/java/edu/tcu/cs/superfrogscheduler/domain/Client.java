@@ -19,7 +19,7 @@ public class Client implements Serializable {
     private String firstname;
     private String lastname;
     private String phoneNumber;
-    private String email;
+    private String username;
 
     public String getFirstname() {
         return firstname;
@@ -45,12 +45,12 @@ public class Client implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.username = email;
     }
 
     private String roles; // comma separated strings
