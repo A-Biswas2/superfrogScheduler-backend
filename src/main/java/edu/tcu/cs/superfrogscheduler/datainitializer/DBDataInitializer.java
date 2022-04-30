@@ -25,22 +25,21 @@ public class DBDataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception{
         Request r1 = new Request();
         r1.setId("12345678923124");
-        r1.setClientName("Bingyang Wei");
+        r1.setFirstname("Bingyang");
+        r1.setLastname("wei");
+        r1.setCity("fort worth");
         r1.setDescription("For computer science celebration");
 
         Request r2 = new Request();
         r2.setId("123456789235153");
-        r2.setClientName("Bingyang Wei");
         r2.setDescription("For computer science celebration");
 
         Request r3 = new Request();
         r3.setId("12345678923456");
-        r3.setClientName("Bingyang Wei");
         r3.setDescription("For computer science celebration");
 
         Request r4 = new Request();
         r4.setId("12345674258923");
-        r4.setClientName("Bingyang Wei");
         r4.setDescription("For computer science celebration");
         requestDao.save(r1);
         requestDao.save(r2);
@@ -56,6 +55,7 @@ public class DBDataInitializer implements CommandLineRunner {
         s1.setId(1);
         s1.setName("firat");
         s1.setRequests(rl);
+        r1.setOwnerFrog(s1);
 
         Superfrog s2 = new Superfrog();
         s2.setId(2);
