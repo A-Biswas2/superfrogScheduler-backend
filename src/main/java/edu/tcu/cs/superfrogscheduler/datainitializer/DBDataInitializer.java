@@ -1,7 +1,9 @@
 package edu.tcu.cs.superfrogscheduler.datainitializer;
 
+import edu.tcu.cs.superfrogscheduler.dao.ClientDao;
 import edu.tcu.cs.superfrogscheduler.dao.RequestDao;
 import edu.tcu.cs.superfrogscheduler.dao.SuperfrogDao;
+import edu.tcu.cs.superfrogscheduler.domain.Client;
 import edu.tcu.cs.superfrogscheduler.domain.Request;
 import edu.tcu.cs.superfrogscheduler.domain.Superfrog;
 import org.springframework.boot.CommandLineRunner;
@@ -15,10 +17,12 @@ public class DBDataInitializer implements CommandLineRunner {
 
     private RequestDao requestDao;
     private SuperfrogDao superfrogDao;
+    private ClientDao clientDao;
 
-    public DBDataInitializer(RequestDao requestDao, SuperfrogDao superfrogDao){
+    public DBDataInitializer(RequestDao requestDao, SuperfrogDao superfrogDao, ClientDao clientDao){
         this.requestDao = requestDao;
         this.superfrogDao = superfrogDao;
+        this.clientDao = clientDao;
     }
 
     @Override
@@ -62,6 +66,13 @@ public class DBDataInitializer implements CommandLineRunner {
         s2.setName("aparijta");
 
 
+        Client c1 = new Client();
+        c1.setUsername("firat");
+        c1.setPassword("123456");
+        c1.setRoles("admin");
+        c1.isEnabled();
+
+        clientDao.save(c1);
         superfrogDao.save(s1);
         superfrogDao.save(s2);
 

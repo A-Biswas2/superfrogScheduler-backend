@@ -20,6 +20,10 @@ public class Client implements Serializable {
     private String lastname;
     private String phoneNumber;
     private String username;
+    private String roles; // comma separated strings
+
+    public Client() {
+    }
 
     public String getFirstname() {
         return firstname;
@@ -49,13 +53,8 @@ public class Client implements Serializable {
         return username;
     }
 
-    public void setEmail(String email) {
+    public void setUsername(String email) {
         this.username = email;
-    }
-
-    private String roles; // comma separated strings
-
-    public Client() {
     }
 
     public Integer getId() {
