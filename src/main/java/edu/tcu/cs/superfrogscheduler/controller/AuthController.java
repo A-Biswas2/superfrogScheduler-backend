@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -19,6 +20,7 @@ public class AuthController {
      *
      * @return JWT token
      */
+    @CrossOrigin
     @PostMapping("/login")
     public Result login(Authentication authentication) throws Exception {
         System.out.println(authentication.getAuthorities());
