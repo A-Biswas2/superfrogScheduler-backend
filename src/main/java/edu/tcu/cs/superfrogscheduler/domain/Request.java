@@ -21,6 +21,16 @@ public class Request implements Serializable{
     private String state;
     private String zip;
     private String description;
+    private boolean finished;
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
     private boolean pending = true;
     @ManyToOne
     @JsonIgnore
