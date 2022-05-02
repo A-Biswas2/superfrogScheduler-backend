@@ -13,13 +13,48 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String username;
     @JsonIgnore
     private String password;
     private boolean enabled;
+    private String firstname;
+    private String lastname;
+    private String phoneNumber;
+    private String username;
     private String roles; // comma separated strings
 
     public Client() {
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String email) {
+        this.username = email;
     }
 
     public Integer getId() {
@@ -28,14 +63,6 @@ public class Client implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {

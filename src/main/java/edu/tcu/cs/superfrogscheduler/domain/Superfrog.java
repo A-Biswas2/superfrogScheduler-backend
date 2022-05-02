@@ -12,10 +12,25 @@ public class Superfrog implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    private boolean inactive;
     private String name;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "ownerFrog")
     @JsonIgnore
     private List<Request> requests = new ArrayList<>();
+
+    public boolean isInactive() {
+        return inactive;
+    }
+
+    public void setInactive(boolean inactive) {
+        this.inactive = inactive;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+
 
 
     public Superfrog(){
